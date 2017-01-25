@@ -1,0 +1,70 @@
+<script src="./bower_components/handsontable/dist/handsontable.full.js"></script>
+<link rel="stylesheet" media="screen" href="./bower_components/handsontable/dist/handsontable.full.css">
+
+<style type="text/css">
+	body {
+  margin: 20px 30px;
+  font-size: 13px;
+  font-family: 'Open Sans', Helvetica, Arial;
+}
+
+a {
+  color: #34A9DC;
+  text-decoration: none;
+}
+
+p {
+  margin: 5px 0 20px;
+}
+
+h2 {
+  margin: 20px 0 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+</style>
+
+<h2>Handsontable Basic Example (100x10)</h2>
+<p>
+  Head to <a href="https://handsontable.com" target="_blank">handsontable.com</a> to learn more about Handsontable.
+</p>
+
+<div id="example"></div>
+
+<script type="text/javascript">
+
+	import { Component } from '@angular/core';
+
+	import { bootstrap } from '@angular/platform-browser-dynamic';
+
+	import { handsontable } from './ng2-handsontable';
+
+	var myData = [
+			["First website", "<a href='http://website1.com'>Website 1</a>"],
+			["Second website", "<a href='http://website2.com'>Website 2</a>"],
+			["Third website", "<a href='http://website3.com'>Website 3</a>"],
+		];
+
+	console.log(myData);
+
+	@Directive({
+	  selector: 'example',
+	  properties: [
+	    myData,
+	    ['header1', 'header2'],
+	    [
+	    	{renderer: "html"},
+	    	{renderer: "html"}
+	  ]
+	})
+
+	export class TestTable;	
+
+
+
+});
+
+
+</script>
+
+<p>End.</p>
