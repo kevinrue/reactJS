@@ -1,0 +1,67 @@
+<script src="./bower_components/handsontable/dist/handsontable.full.js"></script>
+<link rel="stylesheet" media="screen" href="./bower_components/handsontable/dist/handsontable.full.css">
+<style type="text/css">
+	body {
+  margin: 20px 30px;
+  font-size: 13px;
+  font-family: 'Open Sans', Helvetica, Arial;
+}
+
+a {
+  color: #34A9DC;
+  text-decoration: none;
+}
+
+p {
+  margin: 5px 0 20px;
+}
+
+h2 {
+  margin: 20px 0 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+</style>
+
+<h2>Handsontable Basic Example (100x10)</h2>
+<p>
+  Head to <a href="https://handsontable.com" target="_blank">handsontable.com</a> to learn more about Handsontable.
+</p>
+
+<div id="example"></div>
+
+<script type="text/javascript">
+	var data = function() {
+	  return Handsontable.helper.createSpreadsheetData(3, 2);
+	};
+
+	console.log(data());
+
+	var myData = [
+		["First website", "<a href='http://website1.com'>Website 1</a>"],
+		["Second website", "<a href='http://website2.com'>Website 2</a>"],
+		["Third website", "<a href='http://website3.com'>Website 3</a>"],
+	];
+
+	console.log(myData);
+
+	var container = document.getElementById('example');
+
+	var hot = new Handsontable(container, {
+	  data: myData,
+	  minSpareCols: 0,
+	  minSpareRows: 0,
+	  rowHeaders: false,
+	  colHeaders: false,
+	  contextMenu: true,
+	  columns: [
+      	{editor: false, readOnly: true, renderer: "html"},
+      	{editor: false, readOnly: true, renderer: "html"}
+      ],
+      disableVisualSelection: true
+});
+
+
+</script>
+
+<p>End.</p>
