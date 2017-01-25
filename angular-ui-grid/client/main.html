@@ -1,0 +1,19 @@
+<head>
+  <title>angular-toy</title>
+
+  <link rel="stylesheet" type="text/css" href="/node_modules/angular-ui-grid/ui-grid.css" />
+  <script src="/node_modules/angular-ui-grid/ui-grid.js"></script>
+</head>
+
+<body>
+  <h1>Manual</h1>
+  <p>This text preceds the table designed manually.</p>
+  <div class="container" ng-app="angular-toy">
+    <datapointstable></datapointstable>
+  </div>
+  <h1>angular-ui--grid</h1>
+  <p>This text preceds the table designed using angular-ui-grid.</p>
+  <div ui-grid="{ data: myData }" class="myGrid"></div>
+  <h1>Conclusion</h1>
+  <p>This text ends the page.</p>
+</body>

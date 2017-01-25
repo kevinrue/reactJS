@@ -1,0 +1,17 @@
+<header>
+  <h1>Scatter plot</h1>
+</header>
+ 
+<table width="20%" align="center">
+	<!-- header row -->
+	<tr>
+		<th>x</th>
+		<th>y</th>
+	</tr>
+	<!-- insert a row for each data point -->
+  	<tr ng-repeat="datapoint in $ctrl.data">
+    	<td>{{datapoint.x}}</td>
+    	<td>{{datapoint.y}}</td>
+  	</tr>
+</table>
+
