@@ -5,17 +5,17 @@ var DataGrid = require('react-datagrid')
 var data = [
   {
     index: 1,
-    firstName: "Kevin",
-    lastName: "Rue",
-    city: "Oxford",
-    email: "kevin.rue@test.com"
+    firstName: "John",
+    lastName: "Lennon",
+    city: "London",
+    email: "john.lennon@test.com"
   },
   {
     index: 2,
-    firstName: "Rafik",
-    lastName: "Salama",
-    city: "Oxford",
-    email: "rafik.salama@test.com"
+    firstName: "Francis",
+    lastName: "Cabrel",
+    city: "Paris",
+    email: "francis.cabrel@test.com"
   }
 ]
 
