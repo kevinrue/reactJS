@@ -1,0 +1,1 @@
+Single HTML file using `handsontable` module to display a simple table.
