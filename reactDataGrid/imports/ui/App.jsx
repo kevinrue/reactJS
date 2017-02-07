@@ -1,3 +1,8 @@
+// import React, { Component, PropTypes } from 'react';
+// import { createContainer } from 'meteor/react-meteor-data';
+ 
+// import { Tasks } from '../api/experiments.js';
+
 import React, { Component } from 'react';
 
 var DataGrid = require('react-datagrid')
@@ -47,9 +52,10 @@ export default class App extends Component {
           style={{
             height: 500,
              width:'90%',
-             'margin-left':'5%',
-             'margin-right':'5%'
+             marginLeft:'5%',
+             marginRight:'5%'
            }}
+           withColumnMenu={false}
 
         />
 
