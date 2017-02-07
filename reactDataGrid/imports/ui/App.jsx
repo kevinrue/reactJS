@@ -5,20 +5,20 @@ var DataGrid = require('react-datagrid')
 var data = [
   {
     index: 1,
-    source: "tissue A",
-    platform: "DNA sequencing",
+    name: "DNA resequencing of renal cancer paired tumours",
+    Nsamples: 49,
   },
   {
     index: 2,
-    source: "tissue B",
-    platform: "RNA sequencing",
+    name: "Differential expression of cell line A in hypoxia vs. normoxia.",
+    Nsamples: 22,
   },
 ]
 
 var columns = [
   { name: 'index', title: '#', width: 50 },
-  { name: 'source' },
-  { name: 'platform' }
+  { name: 'name', width: '80%' },
+  { name: 'Nsamples', title: 'Samples' }
 ]
 
 // App component - represents the whole app
@@ -32,10 +32,10 @@ export default class App extends Component {
         </header>
 
         <p>
-        Let us imagine we have a table of biological samples made of three columns:
+        Let us imagine we have a table of experiments samples made of three columns:
         <ul>
           <li>a unique identifier</li>
-          <li>the tissue of origin</li>
+          <li>a friendly name</li>
           <li>the type of data</li>
         </ul>
         </p>
@@ -44,7 +44,12 @@ export default class App extends Component {
           idProperty='id'
           dataSource={data}
           columns={columns}
-          style={{height: 500}}
+          style={{
+            height: 500,
+             width:'90%',
+             'margin-left':'5%',
+             'margin-right':'5%'
+           }}
 
         />
 
