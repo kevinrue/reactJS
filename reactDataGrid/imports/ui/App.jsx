@@ -41,7 +41,7 @@ export default class App extends Component {
         <ul>
           <li>a unique identifier</li>
           <li>a friendly name</li>
-          <li>the type of data</li>
+          <li>the number of samples</li>
         </ul>
         </p>
  
