@@ -7,28 +7,32 @@ import React, { Component } from 'react';
 
 var DataGrid = require('react-datagrid')
 
-var data = [
-  {
-    index: 1,
-    name: "DNA resequencing of renal cancer paired tumours",
-    Nsamples: 49,
-  },
-  {
-    index: 2,
-    name: "Differential expression of cell line A in hypoxia vs. normoxia.",
-    Nsamples: 22,
-  },
-]
-
-var columns = [
-  { name: 'index', title: '#', width: 50 },
-  { name: 'name', width: '80%' },
-  { name: 'Nsamples', title: 'Samples' }
-]
-
 // App component - represents the whole app
 export default class App extends Component {
- 
+
+  getExperiments(){
+    return [
+      {
+        _id: 1,
+        name: "DNA resequencing of renal cancer paired tumours",
+        Nsamples: 49,
+      },
+      {
+        _id: 2,
+        name: "Differential expression of cell line A in hypoxia vs. normoxia.",
+        Nsamples: 22,
+      },
+    ]
+  }
+
+  getDataGridColumns(){
+    return [
+      { name: '_id', title: '#', width: 50 },
+      { name: 'name', width: '80%' },
+      { name: 'Nsamples', title: 'Samples' }
+    ]
+  }
+
   render() {
     return (
       <div className="container">
@@ -47,8 +51,8 @@ export default class App extends Component {
  
         <DataGrid
           idProperty='id'
-          dataSource={data}
-          columns={columns}
+          dataSource={this.getExperiments()}
+          columns={this.getDataGridColumns()}
           style={{
             height: 500,
              width:'90%',
