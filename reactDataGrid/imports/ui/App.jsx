@@ -75,6 +75,7 @@ class App extends Component {
         <p>
           The table would then look something like the following (modulo CSS):
         </p>
+        {/* Render (=insert) the experiment table here. */}
         {this.renderExperimentTable()}
         <header>
           <h1>Add a new experiment</h1>
@@ -102,9 +103,8 @@ class App extends Component {
           as described <a href="https://docs.mongodb.com/manual/reference/bson-types/#objectid">here</a>.
         </p>
         <p>
-          However, the appl
-          it is urgent to implement some sanity check,
-          to make sure that every experiment carries a <em>unique</em> name.
+          However, the application does not check whether the name of the new experiment
+          already exists in the collection. This will require some additional sanity check.
         </p>
 
       </div>
