@@ -5,7 +5,7 @@ import Select from 'react-select';
 
 import { Experiments } from '../api/experiments.js';
 
-export default class ExperimentsDropdown extends Component {
+class ExperimentsDropdown extends Component {
 
 	constructor(props) {
 		super(props);
@@ -30,11 +30,19 @@ export default class ExperimentsDropdown extends Component {
 			{label: "first", value: 1},
 			{label: "second", value: 2},
 			{label: "third", value: 3}
-		];
+		]; 
+
+		options = this.props.experiments.map((experiment) => (
+			{label: experiment.name, value: experiment._id}
+		));
+
+		console.log(options)
 
 		return (
 			<div className="section">
-				<h3 className="section-heading">{this.props.label}</h3>
+				<header>
+					<h1 className="section-heading">{this.props.label}</h1>
+				</header>
 				<Select
 					ref="experimentSelect"
 					autofocus
@@ -54,10 +62,19 @@ export default class ExperimentsDropdown extends Component {
 
 ExperimentsDropdown.propTypes = {
 	label: React.PropTypes.string,
-	searchable: React.PropTypes.bool
+	searchable: React.PropTypes.bool,
+	experiments: PropTypes.array.isRequired,
 };
 
 ExperimentsDropdown.defaultProps = {
 	label: 'Delete an experiment',
 	searchable: true
 };
+
+// The wrapped 'App' component fetches tasks from the Tasks collection
+// and supplies them to the underlying 'App' component it wraps as the 'tasks' prop.
+export default createContainer(() => {
+  return {
+    experiments: Experiments.find({}).fetch(),
+  };
+}, ExperimentsDropdown);

@@ -108,9 +108,6 @@ class App extends Component {
           already exists in the collection. This will require some additional sanity check.
         </p>
 
-        <header>
-          <h1>Delete an experiment</h1>
-        </header>
         <div>
           <ExperimentsDropdown label="Delete an experiment" searchable />
         </div>
