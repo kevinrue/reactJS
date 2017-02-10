@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
  
 import { Experiments } from '../api/experiments.js';
+import ExperimentsDropdown from './ExperimentsDropdown';
 
 var DataGrid = require('react-datagrid')
 
@@ -67,11 +68,11 @@ class App extends Component {
 
         <p>
           Let us imagine we have a table of experiments samples made of two columns:
-          <ul>
+        </p>
+        <ul>
             <li>a friendly name</li>
             <li>the number of samples</li>
-          </ul>
-        </p>
+        </ul>
         <p>
           The table would then look something like the following (modulo CSS):
         </p>
@@ -107,6 +108,16 @@ class App extends Component {
           already exists in the collection. This will require some additional sanity check.
         </p>
 
+        <header>
+          <h1>Delete an experiment</h1>
+        </header>
+        <div>
+          <ExperimentsDropdown label="Experiments" searchable />
+        </div>
+        <p>
+          The above dropdown menu currently contains hard-coded dummy values and labels.
+          The component should soon be connected to the collection of experiments.
+        </p>
       </div>
     );
   }
