@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
  
 import { Experiments } from '../api/experiments.js';
-import ExperimentsDropdown from './ExperimentsDropdown';
+import ExperimentsDropdown from './ExperimentsDropdown.jsx';
 
 var DataGrid = require('react-datagrid')
 
@@ -112,7 +112,7 @@ class App extends Component {
           <h1>Delete an experiment</h1>
         </header>
         <div>
-          <ExperimentsDropdown label="Experiments" searchable />
+          <ExperimentsDropdown label="Delete an experiment" searchable />
         </div>
         <p>
           The above dropdown menu currently contains hard-coded dummy values and labels.

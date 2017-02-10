@@ -5,35 +5,26 @@ import Select from 'react-select';
 
 import { Experiments } from '../api/experiments.js';
 
-var ExperimentsField = React.createClass({
-	displayName: 'ExperimentsField',
-	propTypes: {
-		label: React.PropTypes.string,
-		searchable: React.PropTypes.bool,
-	},
-	getDefaultProps () {
-		return {
-			label: 'Experiments:',
-			searchable: true,
-		};
-	},
-	getInitialState () {
-		return {
-			disabled: false,
+export default class ExperimentsDropdown extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			disable: false,
 			searchable: this.props.searchable,
 			selectedValue: '',
 			clearable: true,
 		};
-	},
+		this.updateValue = this.updateValue.bind(this); // React components using ES6 classes no longer autobind this to non React methods
+	}
+
 	updateValue (newValue) {
 		console.log('State changed to ' + newValue);
 		this.setState({
 			selectedValue: newValue
 		});
-	},
-	focusStateSelect () {
-		this.refs.stateSelect.focus();
-	},
+	}
+
 	render () {
 		var options = [
 			{label: "first", value: 1},
@@ -59,6 +50,14 @@ var ExperimentsField = React.createClass({
 			</div>
 		);
 	}
-});
+};
 
-module.exports = ExperimentsField;
+ExperimentsDropdown.propTypes = {
+	label: React.PropTypes.string,
+	searchable: React.PropTypes.bool
+};
+
+ExperimentsDropdown.defaultProps = {
+	label: 'Delete an experiment',
+	searchable: true
+};
