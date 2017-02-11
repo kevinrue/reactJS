@@ -108,13 +108,8 @@ class App extends Component {
           already exists in the collection. This will require some additional sanity check.
         </p>
 
-        <div>
-          <ExperimentsDropdown label="Delete an experiment" searchable />
-        </div>
-        <p>
-          The above dropdown menu currently contains hard-coded dummy values and labels.
-          The component should soon be connected to the collection of experiments.
-        </p>
+        <ExperimentsDropdown label="Delete an experiment" searchable />
+        
       </div>
     );
   }
