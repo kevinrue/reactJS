@@ -39,7 +39,7 @@ class ExperimentsDropdown extends Component {
 	    //const identifier = ReactDOM.findDOMNode(this.refs.selectedExperiment).value.trim();
 	    //console.log('Remove identifier: ' + identifier)
 	 
-	    Experiments.remove({"_id": this.state.selectedValue});
+	    Experiments.remove(this.state.selectedValue);
 	 
 	    // Clear form
 	    this.setState({
