@@ -28,33 +28,21 @@ class ExperimentsDropdown extends Component {
 	}
 
 	handleSubmit(event) {
+		// Among others: do not reload the page
 	    event.preventDefault();
 
-	    // Find the text field via the React ref
-	    //console.log('Remove se: ' + ReactDOM.findDOMNode(this.refs.'selected-experiment').value.trim());
-	    console.log(this.props.experiments);
-	    console.log('Remove sE: ' + this.state.selectedValue);
+	    console.log('Remove experiment with ID: ' + this.state.selectedValue);
 	    console.log(Experiments.findOne({ _id: this.state.selectedValue }));
-	    
-	    //const identifier = ReactDOM.findDOMNode(this.refs.selectedExperiment).value.trim();
-	    //console.log('Remove identifier: ' + identifier)
 	 
 	    Experiments.remove(this.state.selectedValue);
 	 
 	    // Clear form
-	    this.setState({
-			selectedValue: ''
-		});
+	    this.setState({selectedValue: ''});
   	}
 
 	render () {
-		var options = [
-			{label: "first", value: 1},
-			{label: "second", value: 2},
-			{label: "third", value: 3}
-		]; 
 
-		options = this.props.experiments.map((experiment) => (
+		let options = this.props.experiments.map((experiment) => (
 			{label: experiment.name, value: experiment._id}
 		));
 
@@ -65,7 +53,7 @@ class ExperimentsDropdown extends Component {
 				</header>
 				<p>
 		          Below is a dropdown menu that lists all existing experiments;
-		          it is accompanied by a button that will soon cause the selected experiment to be deleted.
+		          it is accompanied by a button that causes the selected experiment to be deleted.
 		          The dropdown component is searchable: users may type in the component,
 		          and the list of options will be dynamically restricted to present
 		          only experiments with a name that matches the typed text.
