@@ -93,6 +93,6 @@ ExperimentsDropdown.defaultProps = {
 // and supplies them to the underlying 'App' component it wraps as the 'tasks' prop.
 export default createContainer(() => {
   return {
-    experiments: Experiments.find({}).fetch(),
+    experiments: Experiments.find({}).fetch()
   };
 }, ExperimentsDropdown);

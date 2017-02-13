@@ -48,7 +48,7 @@ class App extends Component {
           dataSource={this.props.experiments}
           columns={this.getDataGridColumns()}
           style={{
-            height: 400,
+            height: 200,
              width:'90%',
              marginLeft:'5%',
              marginRight:'5%'
@@ -63,7 +63,7 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>Simple datagrid</h1>
+          <h1>Experiments (count: {this.props.experimentsCount})</h1>
         </header>
 
         <p>
@@ -124,5 +124,6 @@ App.propTypes = {
 export default createContainer(() => {
   return {
     experiments: Experiments.find({}).fetch(),
+    experimentsCount: Experiments.find({}).count(),
   };
 }, App);
