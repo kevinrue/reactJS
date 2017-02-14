@@ -49,7 +49,7 @@ class ExperimentsDropdown extends Component {
 		return (
 			<div className="delete-dropdown-form">
 				<header>
-					<h1 className="section-heading">{this.props.label}</h1>
+					<h2 className="section-heading">{this.props.label}</h2>
 				</header>
 				<p>
 		          Below is a dropdown menu that lists all existing experiments;

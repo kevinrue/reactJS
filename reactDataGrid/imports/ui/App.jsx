@@ -1,15 +1,22 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+// Meteor.user() to get the currently logged in user
+import { Meteor } from 'meteor/meteor';
 // To use data from a Meteor collection inside a React component,
 // we can use an Atmosphere package react-meteor-data
 // which allows us to create a "data container" to feed Meteor's reactive data
 // into React's component hierarchy.
-import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
- 
+
 import { Experiments } from '../api/experiments.js';
 import ExperimentsDropdown from './ExperimentsDropdown.jsx';
 
-var DataGrid = require('react-datagrid')
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
+// Import the DataGrid component
+// Data and properties are supplied further below
+// There may be a better place for this line
+let DataGrid = require('react-datagrid')
 
 // App component - represents the whole app
 class App extends Component {
@@ -59,11 +66,22 @@ class App extends Component {
       )
   }
 
+  renderWelcomeHeader(user) {
+    return "Hello, " + (user===null? "stranger" : user.username) + "!"
+  }
+
   render() {
+
     return (
       <div className="container">
+        <AccountsUIWrapper />
+
         <header>
-          <h1>Experiments (count: {this.props.experimentsCount})</h1>
+          <h1>{this.renderWelcomeHeader(this.props.currentUser)}</h1>
+        </header>
+
+        <header>
+          <h2>Experiments (count: {this.props.experimentsCount})</h2>
         </header>
 
         <p>
@@ -79,7 +97,7 @@ class App extends Component {
         {/* Render (=insert) the experiment table here. */}
         {this.renderExperimentTable()}
         <header>
-          <h1>Add a new experiment</h1>
+          <h2>Add a new experiment</h2>
         </header>
         <p>
           At its simplest, adding a new experiment in the database should be as simple
@@ -125,5 +143,6 @@ export default createContainer(() => {
   return {
     experiments: Experiments.find({}).fetch(),
     experimentsCount: Experiments.find({}).count(),
+    currentUser: Meteor.user()
   };
 }, App);
