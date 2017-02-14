@@ -1,5 +1,5 @@
 {
-  "name": "reactDataGrid",
+  "name": "Opera",
   "private": true,
   "main": "server/main.js",
   "browser": "client/main.jsx",

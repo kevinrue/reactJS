@@ -67,7 +67,7 @@ class App extends Component {
   }
 
   renderWelcomeHeader(user) {
-    return "Hello, " + (user===null? "stranger" : user.username) + "!"
+    return "Hello, " + (user==null? "stranger" : user.username) + "!"
   }
 
   render() {
@@ -96,37 +96,45 @@ class App extends Component {
         </p>
         {/* Render (=insert) the experiment table here. */}
         {this.renderExperimentTable()}
-        <header>
-          <h2>Add a new experiment</h2>
-        </header>
-        <p>
-          At its simplest, adding a new experiment in the database should be as simple
-          as inserting a new name in the collection of experiments, without any associated
-          sample.
-        </p>
+        
         {/*
           The form element has an 'onSubmit' attribute that references a method on the component
           called 'handleSubmit'.
           In React, this is how you listen to browser events, like the submit event on the form.
           The input element has a ref property which will let us easily access this element later.
-        */}
-        <form className="new-experiment" onSubmit={this.handleSubmit.bind(this)} >
-          <input
-            type="text"
-            ref="experimentNameInput"
-            placeholder="Type to add a new experiment"
-          />
-        </form>
-        <p>
-          Note that MongoDB automatically creates an identifier for the new entry
-          as described <a href="https://docs.mongodb.com/manual/reference/bson-types/#objectid">here</a>.
-        </p>
-        <p>
-          However, the application does not check whether the name of the new experiment
-          already exists in the collection. This will require some additional sanity check.
-        </p>
+        */
+        // Only display the form to users logged in
+        this.props.currentUser ? (
+          <div> {/* TODO: Make this div a Component */}
+            <header>
+              <h2>Add a new experiment</h2>
+             </header>
+             <p>
+               At its simplest, adding a new experiment in the database should be as simple
+               as inserting a new name in the collection of experiments, without any associated
+               sample.
+             </p>
+             <form className="new-experiment" onSubmit={this.handleSubmit.bind(this)} >
+               <input
+                 type="text"
+                 ref="experimentNameInput"
+                 placeholder="Type to add a new experiment"
+               />
+             </form>
+             <p>
+               Note that MongoDB automatically creates an identifier for the new entry
+               as described <a href="https://docs.mongodb.com/manual/reference/bson-types/#objectid">here</a>.
+             </p>
+             <p>
+               However, the application does not check whether the name of the new experiment
+               already exists in the collection. This will require some additional sanity check.
+             </p>
+           </div>) : ''
+        }
 
-        <ExperimentsDropdown label="Delete an experiment" searchable />
+        { this.props.currentUser ? 
+          <ExperimentsDropdown label="Delete an experiment" searchable /> : ''
+        }
         
       </div>
     );
